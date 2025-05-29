@@ -188,11 +188,8 @@ async function initializeDatabase() {
 
 async function startServer() {
     try {
-        await mongoose.connect(MONGO_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log("✅ Connected to MongoDB");
+        await mongoose.connect(MONGO_URL).then( console.log("✅ Connected to MongoDB"));
+       
         
         await initializeDatabase();
 
