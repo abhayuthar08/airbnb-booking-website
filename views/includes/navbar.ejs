@@ -1,31 +1,44 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom bg-[#16423C] sticky-top d-flex">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-building-columns" style="color: #6a07ec;"></i></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- <a class="nav-link" href="/">Home</a> -->
-          <a class="nav-link" href="/listings">Explore</a>
-          
-        </div>
-
-        
-
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/app-info">App_Info</a>
-          <a class="nav-link" href="">Terms&Condition</a>
-          <a class="nav-link" href="">About_Us</a>
-          <a class="nav-link" href="/listings/new">Add_Museum</a>
-          <% if(!currUser) { %> 
-          <a class="nav-link" href="/signup"><b>Sign_Up</b></a>
-          <a class="nav-link" href="/login"><b>Login</b></a>
-          <% } %>
-          <% if(currUser) { %>
-          <a class="nav-link" href="/logout">Logout</a>
-          <% } %>
-        </div>
+<nav class="navbar main-navbar navbar-expand-md bg-body-light border-bottom bg-[#16423C] sticky-top d-flex">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-solid fa-building-columns" style="color: #6a07ec; margin-left: 20px;"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings" style="margin-left: 20px;">Explore</a>
       </div>
+
+      <div class="navbar-nav second-nav ms-auto">
+        <a class="nav-link" href="/app-info">Web Info</a> <!-- Web Info Page -->
+        <a class="nav-link" href="/conditions">Conditions</a> <!-- Conditions Page -->
+        <a class="nav-link" href="/about-us">About Us</a> <!-- About Us Page -->
+
+        <% if(!currUser) { %> 
+        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+        <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+        
+        <% if(currUser) { %>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
+
+      
     </div>
-  </nav>
-  
+  </div>
+
+  <script>
+    window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+  </script>
+</nav>

@@ -1,24 +1,29 @@
 <% layout("/layouts/boilerplate") %>
+<style>
+    body {
+        /* background-color: black; */
+    }
+</style>
 
 <body>
     <div class="row mt-3 pt-3">
         <div class="col-10 offset-3 mt-2 mb-3">
             <h3><b>Museum Details:</b></h3>
         </div>
-        <div class="card col-12 offset-3" style="width: 50rem;">
+        <div class="card col-12 offset-3" style="width: 50rem; border: 1.5px solid black;">
             <br />
             <img src="<%= listing.image %>" class="card-img-top show-img" style="height: 50vh;" alt="...">
             <div class="card-body">
                 <p class="card-text">
                     <br />
-                    <b>Name</b> :<b><i>&nbsp;<%= listing.title %></i></b> <br />
-                    <b>Location</b> :&nbsp;<%= listing.location %> <br />
-                    <b>Description</b> :&nbsp;<%= listing.description %> <br />
-                    <b>Ticket Fees</b> :&nbsp;&#8377; <%= listing.ticketfees %> <br />
-                    <b>Opening Time</b> :&nbsp;<%= listing.openingtime %> <br />
-                    <b>Closing Time</b> :&nbsp;<%= listing.closingtime %> <br />
-                    <b>Rating</b> :&nbsp; <%= listing.ratings %> <br />
-                    <b>History</b> :&nbsp; <%= listing.history %> <br />
+                    <b>Name</b> :<b><i>&nbsp;<%= listing.title %></i></b> <br /> <br>
+                    <b>Location</b> :&nbsp;<%= listing.location %> <br /> <br>
+                    <b>Description</b> :&nbsp;<%= listing.description %> <br /> <br>
+                    <b>Ticket Fees</b> :&nbsp;&#8377; <%= listing.ticketfees %> <br /> <br>
+                    <b>Opening Time</b> :&nbsp;<%= listing.openingtime %> <br /> <br>
+                    <b>Closing Time</b> :&nbsp;<%= listing.closingtime %> <br /> <br>
+                    <b>Rating</b> :&nbsp; <%= listing.ratings %> <br /> <br>
+                    <b>History</b> :&nbsp; <%= listing.history %> <br /> <br>
                     <b>Related Info</b> :&nbsp; <%= listing.relatedinfo %> <br />
                 </p>
             </div>
@@ -99,7 +104,7 @@
     </div>
 
     <div class="col-8 offset-3">
-        <br><h3>Wanna Book a Ticket ??!</h3> <br>
+        <br><h3>Wanna Book a Ticket ?</h3> <br>
         <a href="/listings/<%= listing._id %>/book" class="btn btn-dark btns">Book</a>
     </div>
 
@@ -137,3 +142,4 @@
     </script> -->
 </body>
 </html>
+

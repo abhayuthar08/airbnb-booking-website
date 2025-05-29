@@ -1,0 +1,124 @@
+<%- layout('/layouts/boilerplate') %>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    /* Section Styles */
+    section {
+        padding: 2rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .intro {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .intro p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 0.5rem;
+    }
+
+    /* Info Grid */
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .info-item {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-item h3 {
+        color: #007bff;
+        margin-bottom: 1rem;
+    }
+
+    .info-item p {
+        color: #333;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #007bff;
+        color: rgb(74, 65, 65);
+        margin-top: 4rem;
+    }
+</style>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Conditions of Use</h1>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <div class="container">
+            <h2>Terms and Conditions</h2>
+            <p>Read the terms and conditions for using our service. By using our service, you agree to these conditions.</p>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section>
+        <div class="container info-grid">
+            <div class="info-item">
+                <h3>General Terms</h3>
+                <p>1. You must be at least 18 years old to use our service.</p>
+                <p>2. All bookings are subject to availability and may be cancelled at any time.</p>
+            </div>
+            <div class="info-item">
+                <h3>Booking Conditions</h3>
+                <p>1. Bookings must be made at least 24 hours in advance.</p>
+                <p>2. Cancellations made within 24 hours of the booking will incur a fee.</p>
+            </div>
+            <div class="info-item">
+                <h3>Refund Policy</h3>
+                <p>1. Refunds are issued only for cancellations made more than 48 hours in advance.</p>
+                <p>2. No refunds will be provided for missed bookings.</p>
+            </div>
+            <div class="info-item">
+                <h3>Privacy Policy</h3>
+                <p>1. We are committed to protecting your privacy and will not share your personal information with third parties.</p>
+                <p>2. For more details, refer to our Privacy Policy page.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+</body>
