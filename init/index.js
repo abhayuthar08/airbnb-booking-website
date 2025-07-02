@@ -1,116 +1,39 @@
-// // // const mongoose = require('mongoose');
-// // // const initData = require('./data.js');
-// // // const Listing = require('../models/listing.js');
+require('dotenv').config();
+const mongoose = require('mongoose');
+const initData = require('./data.js');
+const Listing = require('../models/listing.js');
 
+const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/ticketsystem";
+const DEFAULT_IMAGE = "https://th.bing.com/th/id/OIP.uozkdEREisT5W-KEJPX49gHaEt?w=254&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"; // <-- Add your default image URL
 
-// // // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+main()
+  .then(() => {
+    console.log("Connected to MongoDB");
+    return initDB();
+  })
+  .then(() => {
+    console.log("Database initialized successfully");
+    mongoose.connection.close();
+  })
+  .catch((err) => {
+    console.error("Error:", err);
+    mongoose.connection.close();
+  });
 
-// // // main()
-// // // .then(() => {
-// // //     console.log("connected to db");
-// // // })
-// // // .catch((err)  => {
-// // //     console.log(err);
-// // // })
+async function main() {
+  await mongoose.connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
-// // // async function main() {
-// // //     await mongoose.connect(MONGO_URL);
-// // // }
-
-// // // const initDB = async () => {
-// // //     await Listing.deleteMany({});
-// // //     await Listing.insertMany(initData.data);
-// // //     console.log("data was initialised");
-// // // }
-
-// // // initDB();
-
-// // const mongoose = require('mongoose');
-// // const initData = require('./data.js');
-// // const Listing = require('../models/listing.js');
-
-// // const MONGO_URL = "mongodb://127.0.0.1:27017/ticketsystem";
-
-// // main()
-// //   .then(() => {
-// //     console.log("Connected to MongoDB");
-// //     initDB()
-// //       .then(() => {
-// //         console.log("Database initialized successfully");
-// //         mongoose.connection.close();
-// //       })
-// //       .catch((err) => {
-// //         console.error("Failed to initialize database:", err);
-// //         mongoose.connection.close();
-// //       });
-// //   })
-// //   .catch((err) => {
-// //     console.error("Failed to connect to MongoDB:", err);
-// //   });
-
-// // async function main() {
-// //   try {
-// //     await mongoose.connect(MONGO_URL, {
-// //       useNewUrlParser: true,
-// //       useUnifiedTopology: true,
-// //       // Remove deprecated options
-// //     });
-// //     console.log("Connected to MongoDB");
-// //   } catch (error) {
-// //     throw new Error(`Failed to connect to MongoDB: ${error.message}`);
-// //   }
-// // }
-
-// // async function initDB() {
-// //   try {
-// //     await Listing.deleteMany({});
-// //     initData.data = initData.data.map((obj) => ({...obj , owner: '66ad2082974deee4f6058cb8' }))
-// //     const inserted = await Listing.insertMany(initData.data);
-// //     console.log(`Inserted ${inserted.length} listings into the database`);
-// //   } catch (error) {
-// //     throw new Error(`Failed to initialize database: ${error.message}`);
-// //   }
-// // }
-
-
-
-
-
-
-// const mongoose = require('mongoose');
-// const initData = require('./data.js');
-// const Listing = require('../models/listing.js');
-
-// // const MONGO_URL = "mongodb://127.0.0.1:27017/ticketsystem";
-
-
-// main()
-//   .then(() => {
-//     console.log("Connected to MongoDB");
-//     return initDB();
-//   })
-//   .then(() => {
-//     console.log("Database initialized successfully");
-//     mongoose.connection.close();
-//   })
-//   .catch((err) => {
-//     console.error("Error:", err);
-//     mongoose.connection.close();
-//   });
-
-// async function main() {
-//   await mongoose.connect(MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   });
-// }
-
-// async function initDB() {
-//   await Listing.deleteMany({});
-//   initData.data = initData.data.map(obj => ({
-//     ...obj,
-//     owner: '66ad2082974deee4f6058cb8' // ensure this ID exists in your DB
-//   }));
-//   const inserted = await Listing.insertMany(initData.data);
-//   console.log(`Inserted ${inserted.length} listings`);
-// }
+async function initDB() {
+  await Listing.deleteMany({});
+  initData.data = initData.data.map(obj => ({
+    ...obj,
+    owner: '66ad2082974deee4f6058cb8', // ensure this ID exists in your DB
+    image: obj.image && obj.image.trim() !== "" ? obj.image : DEFAULT_IMAGE // <-- Set default image if missing
+  }));
+  const inserted = await Listing.insertMany(initData.data);
+  console.log(`Inserted ${inserted.length} listings`);
+}

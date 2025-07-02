@@ -1,4 +1,4 @@
-    <%- layout("/layouts/boilerplate") %>
+<%- layout("/layouts/boilerplate") %>
 
     <!-- GSAP Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
@@ -158,7 +158,10 @@
                 <% for(let listing of allListings) { %>
                     <a href="/listings/<%= listing._id %>" class="listing-link">
                         <div class="card col listing-card">
-                            <img src="<%= listing.image %>" class="card-img-top" alt="listing_img">
+                            <img src="<%= listing.image || 'https://via.placeholder.com/300x200?text=No+Image' %>" 
+                                 class="card-img-top" 
+                                 alt="listing_img"
+                                 onerror="this.onerror=null;this.src='https://th.bing.com/th/id/OIP.uozkdEREisT5W-KEJPX49gHaEt?w=254&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3e';">
                             <div class="card-body">
                                 <p class="card-text">
                                     <b><%= listing.title %></b><br />
@@ -181,7 +184,12 @@
         </div>
 
         <script>
-            function loadingpage() {
+            // Only show splash if coming from first page
+            if (sessionStorage.getItem('showSplash') === 'true') {
+                document.getElementById('splashScreen').style.display = 'flex';
+                document.getElementById('mainContent').style.display = 'none';
+                sessionStorage.removeItem('showSplash');
+
                 let tl = gsap.timeline();
 
                 document.addEventListener("DOMContentLoaded", function () {
@@ -221,17 +229,21 @@
                                     ease: "power3.in",
                                     width: "85vw",
                                     onComplete: () => {
-                                        document.querySelector("#splashScreen").style.display = "none";
-                                        document.querySelector("#mainContent").style.display = "block"; // Show main content
-                                        document.body.style.overflow = "auto"; // Re-enable scrolling
+                                        document.getElementById("splashScreen").style.display = "none";
+                                        document.getElementById("mainContent").style.display = "block";
+                                        document.body.style.overflow = "auto";
                                     },
                                 });
                             },
                         }
                     );
                 });
+            } else {
+                // No splash, show main content immediately
+                document.getElementById('splashScreen').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                document.body.style.overflow = "auto";
             }
-            loadingpage();
 
             // Toggle the bot visibility
             function toggleBot() {
