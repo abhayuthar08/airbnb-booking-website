@@ -5,7 +5,7 @@
         <div class="col-10 offset-3"><h3>Listing Details:</h3> </div>
     <div class="card col-12 offset-3" style="width: 50rem;">
         <br />
-            <img src="<%= listing.image %>" class="card-img-top show-img" style="height: 50vh;" alt="...">
+            <img src="<%= listing.image %>" class="card-img-top show-img" style="height: 50vh;" alt="..." onerror="this.onerror=null;this.src='/images/default.jpg';">
             <div class="card-body">
               <p class="card-text">
                 <br />
@@ -25,10 +25,12 @@
      <br />
     <div class="col-2 offset-3 btndiv mt-3">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark btns">Edit </a>
-    <br /> <br />
-    <form method="POST" action="/listings/<%= listing._id %>/?_method=DELETE">
-        <button class="btn btn-dark btns">Delete</button>
-    </form>
+        <br /> <br />
+        <form method="POST" action="/listings/<%= listing._id %>/?_method=DELETE">
+            <button class="btn btn-dark btns">Delete</button>
+        </form>
+        <br />
+        <a href="/listings/<%= listing._id %>/book" class="btn btn-success btns">Book Ticket</a>
     </div>
 
            

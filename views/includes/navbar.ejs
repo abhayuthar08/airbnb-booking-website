@@ -7,22 +7,18 @@
         <div class="navbar-nav">
           <!-- <a class="nav-link" href="/">Home</a> -->
           <a class="nav-link" href="/listings">Explore</a>
-          
         </div>
-
-        
 
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Airbnb_your_home</a>
-          <% if(!currUser) { %> 
+          <% if(currUser) { %>
+          <a class="nav-link" href="/your_bookings"><b>Your_Bookings</b></a>
+          <a class="nav-link" href="/logout">Logout</a>
+          <% } else { %>
           <a class="nav-link" href="/signup"><b>Sign_Up</b></a>
           <a class="nav-link" href="/login"><b>Login</b></a>
-          <% } %>
-          <% if(currUser) { %>
-          <a class="nav-link" href="/logout">Logout</a>
           <% } %>
         </div>
       </div>
     </div>
   </nav>
-  

@@ -1,7 +1,46 @@
 const Listing = require('../models/listing');
 
 module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
+    const filter = req.query.filter;
+    let query = {};
+    if (filter) {
+        switch (filter) {
+            case 'beachfront':
+                query = { title: /beach|beachfront|ocean|sea/i };
+                break;
+            case 'pet':
+                query = { description: /pet|dog|cat|animal/i };
+                break;
+            case 'family':
+                query = { description: /family|kids|children|friendly/i };
+                break;
+            case 'villa':
+                query = { title: /villa/i };
+                break;
+            case 'unique':
+                query = { title: /treehouse|dome|island|bungalow|hostel|cottage|cabin|retreat|unique/i };
+                break;
+            case 'luxury':
+                query = { description: /luxury|penthouse|suite|exclusive|resort/i };
+                break;
+            case 'budget':
+                query = { price: { $lte: 1200 } };
+                break;
+            case 'ski':
+                query = { title: /ski|chalet|mountain/i };
+                break;
+            case 'parks':
+                query = { location: /park|national|nature|forest/i };
+                break;
+            case 'workspace':
+                query = { description: /workspace|remote|work|business|wifi|office/i };
+                break;
+            default:
+                query = {};
+        }
+    }
+    const allListings = await Listing.find(query);
+    console.log('DEBUG: allListings:', allListings); // Debug log
     res.render("listings/index", { allListings });
 }
 

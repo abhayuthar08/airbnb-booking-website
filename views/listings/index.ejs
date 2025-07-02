@@ -1,5 +1,53 @@
 <% layout("/layouts/boilerplate") %>
 
+<% if (!allListings || allListings.length === 0) { %>
+  <div style="color: red; font-weight: bold;">No listings found!</div>
+<% } %>
+
+<!-- Filter Bar -->
+<div id="filters" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: center; margin: 2rem 0 1rem 0;">
+  <a href="/listings?filter=beachfront" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-umbrella-beach"></i></div>
+    <div style="font-size:1rem;">Beachfront</div>
+  </a>
+  <a href="/listings?filter=pet" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-dog"></i></div>
+    <div style="font-size:1rem;">Pet Friendly</div>
+  </a>
+  <a href="/listings?filter=family" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-children"></i></div>
+    <div style="font-size:1rem;">Family Friendly</div>
+  </a>
+  <a href="/listings?filter=villa" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-hotel"></i></div>
+    <div style="font-size:1rem;">Villas</div>
+  </a>
+  <a href="/listings?filter=unique" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-tree"></i></div>
+    <div style="font-size:1rem;">Unique Stays</div>
+  </a>
+  <a href="/listings?filter=luxury" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-gem"></i></div>
+    <div style="font-size:1rem;">Luxury</div>
+  </a>
+  <a href="/listings?filter=budget" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-wallet"></i></div>
+    <div style="font-size:1rem;">Budget</div>
+  </a>
+  <a href="/listings?filter=ski" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-skiing"></i></div>
+    <div style="font-size:1rem;">Skiing</div>
+  </a>
+  <a href="/listings?filter=parks" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-mountain"></i></div>
+    <div style="font-size:1rem;">National Parks</div>
+  </a>
+  <a href="/listings?filter=workspace" class="filter-link" style="text-decoration:none; color:inherit; text-align:center;">
+    <div style="font-size:2rem;"><i class="fa-solid fa-laptop-house"></i></div>
+    <div style="font-size:1rem;">Workspaces</div>
+  </a>
+</div>
+
 <style>
     #filters{
         margin-top: 1rem;
@@ -27,45 +75,6 @@
 </style>
 
 <body>
-    <div id="filters">
-        <div class="filter">
-           <div class="img"> <i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-        </div>
-
-        
-            <div class="filter">
-               <div class="img"> <i class="fa-solid fa-bed"></i></div>
-                <p>Rooms</p>
-            </div>
-
-            <div class="filter">
-                <div class="img"> <i class="fa-solid fa-campground"></i></div>
-                 <p>Camping</p>
-             </div>
-
-             <div class="filter">
-                <div class="img"> <i class="fa-solid fa-tractor"></i></div>
-                 <p>Farms</p>
-             </div>
-
-             <div class="filter">
-                <div class="img"> <i class="fa-solid fa-mountain-city"></i></div>
-                 <p>Iconic cities</p>
-             </div>
-
-             <div class="filter">
-                <div class="img"> <i class="fa-brands fa-fort-awesome"></i></div>
-                 <p>Castles</p>
-             </div>
-
-             <div class="filter">
-                <div class="img"> <i class="fa-solid fa-person-swimming"></i></div>
-                 <p>Amazin Pools</p>
-             </div>
-            
-    </div>
-
     <!-- <form method="get" action="/listings/new" >
         <button>Add Listing</button>
     </form> -->
@@ -74,7 +83,7 @@
     <% for(let listing of allListings) { %>
             <a href="/listings/<%= listing._id %>" class="listing-link">
                 <div class="card col listing-card ">
-                    <img src="<%= listing.image %>" class="card-img-top" alt="listing_img" style="height: 20rem;">
+                    <img src="<%= listing.image %>" class="card-img-top" alt="listing_img" style="height: 20rem;" onerror="this.onerror=null;this.src='/images/default.jpg';">
                     <div class="card-body">
                         <div class="card-img-overlay">
                          </div>

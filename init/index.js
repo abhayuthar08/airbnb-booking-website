@@ -1,41 +1,19 @@
-// const mongoose = require('mongoose');
-// const initData = require('./data.js');
-// const Listing = require('../models/listing.js');
-
-
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
-
-// main()
-// .then(() => {
-//     console.log("connected to db");
-// })
-// .catch((err)  => {
-//     console.log(err);
-// })
-
-// async function main() {
-//     await mongoose.connect(MONGO_URL);
-// }
-
-// const initDB = async () => {
-//     await Listing.deleteMany({});
-//     await Listing.insertMany(initData.data);
-//     console.log("data was initialised");
-// }
-
-// initDB();
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 const initData = require('./data.js');
 const Listing = require('../models/listing.js');
+const User = require('../models/user.js');
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.MONGO_URL;
 
 main()
   .then(() => {
     console.log("Connected to MongoDB");
+    console.log("Seeder is using DB:", mongoose.connection.name, "on host:", mongoose.connection.host);
     initDB()
-      .then(() => {
+      .then(async () => {
+        const count = await Listing.countDocuments();
+        console.log("Listings in collection after seeding:", count);
         console.log("Database initialized successfully");
         mongoose.connection.close();
       })
@@ -50,11 +28,7 @@ main()
 
 async function main() {
   try {
-    await mongoose.connect(MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      // Remove deprecated options
-    });
+    await mongoose.connect(MONGO_URL);
     console.log("Connected to MongoDB");
   } catch (error) {
     throw new Error(`Failed to connect to MongoDB: ${error.message}`);
@@ -64,13 +38,27 @@ async function main() {
 async function initDB() {
   try {
     await Listing.deleteMany({});
-    initData.data = initData.data.map((obj) => ({...obj , owner: '66ad2082974deee4f6058cb8' }))
-    const inserted = await Listing.insertMany(initData.data);
-    console.log(`Inserted ${inserted.length} listings into the database`);
+    // Create/find demo user
+    let demoUser = await User.findOne({ username: 'demo-seed-user' });
+    if (!demoUser) {
+      demoUser = new User({ username: 'demo-seed-user', email: 'demo@seed.com' });
+      await User.register(demoUser, 'demopassword');
+    }
+    // Assign demo user's _id as owner
+    const listingsWithOwner = initData.data.map((obj) => ({ ...obj, owner: demoUser._id }));
+    const inserted = await Listing.insertMany(listingsWithOwner);
+    console.log(`Inserted ${inserted.length} listings into the database (owner: ${demoUser._id})`);
+    // Debug: print first listing inserted
+    if (inserted.length > 0) {
+      console.log('First inserted listing:', inserted[0]);
+    }
   } catch (error) {
     throw new Error(`Failed to initialize database: ${error.message}`);
   }
 }
+
+// Make sure your .env contains:
+// MONGO_URL=mongodb+srv://xrusherop008:abhi%40123x@cluster0.wiiof0l.mongodb.net/airbnb-hotel-book-app?retryWrites=true&w=majority&appName=Cluster0
 
 
 

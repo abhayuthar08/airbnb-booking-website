@@ -1,0 +1,39 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-5">
+  <div class="col-10 offset-1">
+    <h2>Your Bookings</h2>
+    <% if (bookings.length === 0) { %>
+      <p>You have no bookings yet.</p>
+    <% } else { %>
+      <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th>Hostel</th>
+            <th>Check-in</th>
+            <th>Check-out</th>
+            <th>Guests</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% bookings.forEach(booking => { %>
+            <% if (booking.listing) { %>
+            <tr>
+              <td><%= booking.listing.title %></td>
+              <td><%= booking.checkin ? booking.checkin.toDateString() : '-' %></td>
+              <td><%= booking.checkout ? booking.checkout.toDateString() : '-' %></td>
+              <td><%= booking.guests %></td>
+              <td><span class="badge bg-success"><%= booking.status %></span></td>
+            </tr>
+            <% } else { %>
+            <tr>
+              <td colspan="5" class="text-danger">Listing no longer exists (deleted)</td>
+            </tr>
+            <% } %>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+</div>

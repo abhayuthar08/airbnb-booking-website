@@ -1,0 +1,74 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="row mt-3">
+        <div class="col-10 offset-3"><h3>Book Your Stay at <%= listing.title %></h3></div>
+        <div class="card col-12 offset-3" style="width: 50rem;">
+            <br />
+            <img src="<%= listing.image %>" class="card-img-top show-img" style="height: 40vh;" alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    <b><%= listing.title %></b> <br />
+                    <%= listing.description %> <br />
+                    &#8377; <%= listing.price.toLocaleString("en-IN") %>/night <br />
+                    <%= listing.location %> <br />
+                    <%= listing.country %> <br />
+                </p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row mt-3">
+        <div class="col-6 offset-3">
+            <form id="booking-form" method="POST" action="/listings/<%= listing._id %>/book/fake-payment">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="checkin" class="form-label">Check-in Date</label>
+                    <input type="date" class="form-control" id="checkin" name="checkin" required>
+                </div>
+                <div class="mb-3">
+                    <label for="checkout" class="form-label">Check-out Date</label>
+                    <input type="date" class="form-control" id="checkout" name="checkout" required>
+                </div>
+                <div class="mb-3">
+                    <label for="guests" class="form-label">Number of Guests</label>
+                    <input type="number" class="form-control" id="guests" name="guests" min="1" value="1" required>
+                </div>
+                <div id="listing-price" data-price="<%= listing.price %>" style="display:none;"></div>
+                <div id="total-price" class="mb-3"></div>
+                <button id="fake-pay-btn" type="submit" class="btn btn-success">Fake Pay</button>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Calculate total price on date change
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkin = document.getElementById('checkin');
+        const checkout = document.getElementById('checkout');
+        const pricePerNight = parseInt(document.getElementById('listing-price').dataset.price, 10);
+        const totalPriceDiv = document.getElementById('total-price');
+        function calculateTotal() {
+            if (checkin.value && checkout.value) {
+                const inDate = new Date(checkin.value);
+                const outDate = new Date(checkout.value);
+                const diffTime = outDate - inDate;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                if (diffDays > 0) {
+                    const total = diffDays * pricePerNight;
+                    totalPriceDiv.innerText = `Total Price: ₹${total.toLocaleString('en-IN')}`;
+                } else {
+                    totalPriceDiv.innerText = 'Check-out must be after check-in.';
+                }
+            } else {
+                totalPriceDiv.innerText = '';
+            }
+        }
+        checkin.addEventListener('change', calculateTotal);
+        checkout.addEventListener('change', calculateTotal);
+    });
+    </script>
+</body>
+</html>

@@ -8,7 +8,8 @@ const listingSchema = new Schema({
         type: String,
         required: [true, 'Title is required'],
         trim: true,  // Automatically trims any surrounding whitespace
-        minlength: [3, 'Title must be at least 3 characters long']
+        minlength: [3, 'Title must be at least 3 characters long'],
+        default: "Abc"
     },
     description: {
         type: String,
