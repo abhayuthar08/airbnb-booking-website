@@ -1,0 +1,144 @@
+<% layout('/layouts/boilerplate') %>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    /* Section Styles */
+    section {
+        padding: 2rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .intro {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .intro p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 0.5rem;
+    }
+
+    /* Info Grid */
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .info-item {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-item h3 {
+        color: #007bff;
+        margin-bottom: 1rem;
+    }
+
+    .info-item p {
+        color: #333;
+    }
+
+    /* Chatbot Integration Section */
+    .chatbot-section {
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+    #chatbot {
+        width: 350px;
+        height: 430px;
+        margin-top: 2rem;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #007bff;
+        color: rgb(74, 65, 65);
+        margin-top: 4rem;
+    }
+
+</style>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Chatbot-Based Museum Ticket System</h1>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <div class="container">
+            <h2>Revolutionizing Ticket Booking</h2>
+            <p>Our intelligent chatbot system makes booking museum tickets easier, faster, and more convenient. Experience the seamless process from inquiry to booking, powered by AI.</p>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section>
+        <div class="container info-grid">
+            <div class="info-item">
+                <h3>How It Works</h3>
+                <p>The chatbot interacts with users, providing museum options, ticket prices, and availability. Simply chat with the bot to complete your booking.</p>
+            </div>
+            <div class="info-item">
+                <h3>Key Features</h3>
+                <p>Our system provides real-time ticket availability, generates tickets with QR codes for entry and exit, and sends them in PDF format directly to your device.</p>
+            </div>
+            <div class="info-item">
+                <h3>Why Chatbots?</h3>
+                <p>Chatbots make the booking process faster by reducing the need for complex forms. They engage users naturally, offering immediate responses to their queries.</p>
+            </div>
+            <div class="info-item">
+                <h3>Future Integrations</h3>
+                <p>We're continually improving the system to include multi-language support, integration with popular payment platforms, and personalized suggestions for users.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Integration Section -->
+    <section class="chatbot-section">
+        <div class="container">
+            <h2>Try the Chatbot</h2>
+            <iframe id="chatbot" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/e497957d-1eba-4467-8ee5-027547e162a4"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="mm-footer">
+        <p>&copy; 2024 Chatbot-Based Ticket System. All rights reserved.</p>
+    </footer>
+
+</body>

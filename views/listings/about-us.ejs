@@ -1,0 +1,136 @@
+<%- layout('/layouts/boilerplate') %>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    /* Section Styles */
+    section {
+        padding: 2rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .intro {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .intro h2 {
+        font-size: 2rem;
+        color: #007bff;
+    }
+
+    .intro p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 0.5rem;
+    }
+
+    /* Team Section */
+    .team-section {
+        margin-top: 4rem;
+        text-align: center;
+    }
+
+    .team-member {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .team-member img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+    }
+
+    .team-member h3 {
+        color: #007bff;
+        margin-bottom: 0.5rem;
+    }
+
+    .team-member p {
+        color: #333;
+        margin: 0;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #007bff;
+        color: rgb(74, 65, 65);
+        margin-top: 4rem;
+    }
+</style>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>About Us</h1>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <div class="container">
+            <h2>Welcome to Our Museum Ticket System</h2>
+            <p>We are a dedicated team committed to providing the best ticket booking experience for museum enthusiasts. Our goal is to make your visit seamless and enjoyable.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-member">
+                <img src="https://picsum.photos/150?random=1" alt="Abhay Suthar">
+                <h3>Abhay Suthar</h3>
+                <p>CEO & Founder</p>
+                <p>Abhay is passionate about cultural heritage and has been leading the company with innovative ideas and a vision for a better user experience.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://picsum.photos/150?random=2" alt="Devarsh Shah">
+                <h3>Devarsh Shah</h3>
+                <p>Technical Lead</p>
+                <p>Devarsh is the brains behind our tech solutions, ensuring that our system runs smoothly and is always up to date with the latest technologies.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://picsum.photos/150?random=3" alt="Vishal Suthar">
+                <h3>Vishal Suthar</h3>
+                <p>Customer Support Manager</p>
+                <p>Vishal is dedicated to providing exceptional support to our users, ensuring all their inquiries and issues are resolved promptly and efficiently.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Museum Ticket System. All rights reserved.</p>
+    </footer>
+
+</body>

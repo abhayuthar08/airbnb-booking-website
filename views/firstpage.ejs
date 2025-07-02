@@ -1,0 +1,66 @@
+<!-- filepath: c:\Users\abhay\OneDrive\Desktop\projects\SIH project\views\firstpage.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome | Museum Ticket Booking App</title>
+    <style>
+        body {
+            background: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .welcome-container {
+            background: #fff;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .welcome-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+        .welcome-desc {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        .visit-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .visit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="welcome-title">Welcome to Museum Ticket Booking App</div>
+        <div class="welcome-desc">
+            Discover, explore, and book tickets for the best museums around you.<br>
+            Start your journey of knowledge and history with us!
+        </div>
+        <form id="visitForm" action="/listings" method="get">
+            <button class="visit-btn" type="submit">Visit Website</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('visitForm').addEventListener('submit', function() {
+            sessionStorage.setItem('showSplash', 'true');
+        });
+    </script>
+</body>
+</html>

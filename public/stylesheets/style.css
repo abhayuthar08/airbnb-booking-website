@@ -14,6 +14,7 @@ body, html {
 }
 
 .navbar {
+<<<<<<< HEAD
     background: #232946 !important;
     border-bottom: 1px solid #393e6b;
     box-shadow: 0 2px 8px rgba(35,41,70,0.08);
@@ -28,6 +29,42 @@ body, html {
 
 .navbar .nav-link:hover, .navbar .navbar-brand:hover {
     color: #a1a7e4 !important;
+=======
+    height: 5rem;
+    background-color: white;
+    border-bottom: 2px solid black;
+   
+}
+
+.second-nav {
+    width: 35vw;
+}
+
+
+
+
+.navbar-nav {
+        align-items: center;
+    
+}
+
+/* .navbar-nav a:hover {
+   text-decoration: underline;
+   scale: 1s;
+
+} */
+
+footer{
+    width: 100% !important;
+}
+
+
+
+.fa-compass{
+    color: rgb(174, 70, 70);
+    font-size: 2.5rem;
+    text-align: center;
+>>>>>>> 5d8e7293063bac7671b79939c3dd71ef4a280440
 }
 
 #filters {
@@ -54,6 +91,7 @@ body, html {
     text-decoration: none;
 }
 
+<<<<<<< HEAD
 .card.listing-card {
     background: #232946;
     color: #eaeaea;
@@ -85,9 +123,66 @@ body, html {
     padding: 1.5rem 0 0.5rem 0;
     text-align: center;
 }
+=======
+.f-info {
+    width: 100% !important;
+    box-sizing: border-box;
+    height: 7em;
+    background-color: #ebebeb;
+    display: flex; 
+    flex-direction: column;    
+    align-items: center;
+    /* justify-content: space-evenly; */
+    text-align: center;
+    justify-items: center;
+    left: 0 !important;
+}
+
+.footer-main {
+    width: 10%;
+}
+
+
+
+.f-info-socials {
+    width: 100%;
+    
+}
+
+html, body {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 1;
+}
+
+.container {
+    flex: 1;
+    /* padding: 0;
+    margin: 0; */
+}
+
+.btn-clr {
+    background-color: rgb(185, 42, 42) !important;
+    border: none !important;
+}
+
+
+
+
+>>>>>>> 5d8e7293063bac7671b79939c3dd71ef4a280440
 .f-info-socials i {
     color: #a1a7e4;
     font-size: 1.5rem;
+<<<<<<< HEAD
     margin: 0 0.5rem;
     transition: color 0.2s;
 }
@@ -97,6 +192,13 @@ body, html {
 .f-info-links a {
     color: #a1a7e4;
     margin: 0 0.5rem;
+=======
+    margin-top: 3vh;
+}
+
+.f-info-links a{
+    width: 120%;
+>>>>>>> 5d8e7293063bac7671b79939c3dd71ef4a280440
     text-decoration: none;
 }
 .f-info-links a:hover {
@@ -114,6 +216,7 @@ body, html {
     background: #a1a7e4 !important;
     color: #232946 !important;
     border: none !important;
+<<<<<<< HEAD
     border-radius: 0.7rem !important;
     font-weight: 600;
     transition: background 0.2s;
@@ -121,6 +224,11 @@ body, html {
 .btn-clr:hover, .btn-primary:hover {
     background: #393e6b !important;
     color: #eaeaea !important;
+=======
+    border-bottom : 2rem;
+    border: 1px solid black;
+   
+>>>>>>> 5d8e7293063bac7671b79939c3dd71ef4a280440
 }
 
 input, textarea, select {
@@ -134,14 +242,93 @@ input:focus, textarea:focus, select:focus {
     outline: none !important;
 }
 
+<<<<<<< HEAD
 ::-webkit-scrollbar {
     width: 10px;
     background: #232946;
+=======
+.card-body {
+    padding: 0 !important;
+    
+>>>>>>> 5d8e7293063bac7671b79939c3dd71ef4a280440
 }
 ::-webkit-scrollbar-thumb {
     background: #393e6b;
     border-radius: 10px;
 }
+<<<<<<< HEAD
 ::-webkit-scrollbar-thumb:hover {
     background: #a1a7e4;
 }
+=======
+
+.listing-link {
+    text-decoration: none !important;
+}
+
+.listing-link:hover {
+    /* transform: scale(1.05) ease-in; */
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.listing-linkk {
+    /* transform: scale(1.05) ease-in; */
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background: white;
+    transform: scale(1.1);
+}
+
+/* show page */
+.show-img {
+    height: 30vh;
+}
+
+.btn {
+    background-color: rgb(214, 69, 69) !important;
+    height: 5vh !important;
+    width: 10vh !important;
+}
+
+.btndiv {
+    display: flex;
+    gap: 2vh;
+}
+
+/* Rating  */ 
+
+.rating {
+    display: flex;
+    gap: 10vw;
+}
+
+.card {
+    padding: 2%;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.buttona{
+    width: 40px;
+    border: 1px solid black;
+
+}
+
+.basic{
+    margin-top: 140px;
+}
+
+>>>>>>> 5d8e7293063bac7671b79939c3dd71ef4a280440
